@@ -676,6 +676,20 @@ client.on('message', async message =>
         }
     }
 
+    if(message.content === 'ike') {
+        if(message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            const stream = ytdl('https://www.youtube.com/watch?v=q69WrDcrvRE', { filter : 'audioonly' });
+            const dispatcher = connection.play(stream);
+            console.log("aik: ", `${message.guild}`);
+
+            dispatcher.on('finish', () => connection.disconnect());
+        }
+        else {
+            return message.replay('conectese al canal qlo');
+        }
+    }
+
     
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
