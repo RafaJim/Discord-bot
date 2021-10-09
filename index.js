@@ -690,7 +690,35 @@ client.on('message', async message =>
         }
     }
 
-    
+    if (message.content.startsWith('joker')) 
+    {
+        const user = message.mentions.users.first();
+        if (user) 
+        {
+          const member = message.guild.members.resolve(user);
+          if (member) 
+          {
+            if (message.member.voice.channel) 
+        {
+            const connection = await message.member.voice.channel.join();
+			const stream = ytdl('https://www.youtube.com/watch?v=aZscBf10Y5A', { filter: 'audioonly' });
+            const dispatcher = connection.play(stream);
+
+			dispatcher.on('finish', () => connection.disconnect());
+        }
+
+        
+        member.send("https://www.youtube.com/watch?v=aZscBf10Y5A");
+        member.voice.kick();
+            console.log('webo torcido desde: ', `${message.guild}`)
+          } else {
+            message.channel.send("El wey no esta en el server");
+          }
+        } else {
+          message.channel.send("Menciona a alguien wey");
+        }
+    }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
