@@ -719,6 +719,20 @@ client.on('message', async message =>
         }
     }
 
+    if(message.content === '!chaparro') {
+        if(message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            const stream = ytdl('https://www.youtube.com/watch?v=JCEGb8DEFwg', { filter : 'audioonly' });
+            const dispatcher = connection.play(stream);
+            console.log("chaparro: ", `${message.guild}`);
+
+            dispatcher.on('finish', () => connection.disconnect());
+        }
+        else {
+            return message.replay('conectese al canal qlo');
+        }
+    }
+
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
