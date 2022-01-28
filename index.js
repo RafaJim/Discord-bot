@@ -443,7 +443,7 @@ client.on('message', async message =>
 
     if(message.content ==='test')
     {
-        client.channels.cache.get('401070235852996622').send('`al chile mejor no, me caga ayana pero da buenos mames, mejor usenme a mi`');
+        client.channels.cache.get('899805415632683068').send('yo tambien');
     }
 
     if(message.content === '!tecnoVaquero')
@@ -602,7 +602,7 @@ client.on('message', async message =>
             dispatcher.on('finish', () => connection.disconnect());
         }
         else {
-            return message.replay('conectese al canal qlo');
+            return message.reply('conectese al canal qlo');
         }
     }
 
@@ -644,7 +644,7 @@ client.on('message', async message =>
             dispatcher.on('finish', () => connection.disconnect());
         }
         else {
-            return message.replay('conectese al canal qlo');
+            return message.reply('conectese al canal qlo');
         }
     }
 
@@ -658,7 +658,7 @@ client.on('message', async message =>
             dispatcher.on('finish', () => connection.disconnect());
         }
         else {
-            return message.replay('conectese al canal qlo');
+            return message.reply('conectese al canal qlo');
         }
     }
 
@@ -672,7 +672,7 @@ client.on('message', async message =>
             dispatcher.on('finish', () => connection.disconnect());
         }
         else {
-            return message.replay('conectese al canal qlo');
+            return message.reply('conectese al canal qlo');
         }
     }
 
@@ -686,7 +686,7 @@ client.on('message', async message =>
             dispatcher.on('finish', () => connection.disconnect());
         }
         else {
-            return message.replay('conectese al canal qlo');
+            return message.reply('conectese al canal qlo');
         }
     }
 
@@ -729,10 +729,63 @@ client.on('message', async message =>
             dispatcher.on('finish', () => connection.disconnect());
         }
         else {
-            return message.replay('conectese al canal qlo');
+            return message.reply('conectese al canal qlo');
         }
     }
 
+    if(message.content === 'test2')
+    {
+        const canal = client.channels.cache.get("401070236306243586");
+        canal.join()
+            .then(canal => {
+                const stream = ytdl('https://www.youtube.com/watch?v=6F8D5L_FhqM', { filter : 'audioonly' });
+                const dispatcher = canal.play(stream);
+                dispatcher.on('finish', () => canal.disconnect());
+            });
+    }
+
+    if(message.content === 'test3')
+    {
+        const canal = client.channels.cache.get("848446352165830717");
+        canal.join()
+            .then(canal => {
+                const stream = ytdl('https://www.youtube.com/watch?v=6F8D5L_FhqM', { filter : 'audioonly' });
+                const dispatcher = canal.play(stream);
+                dispatcher.on('finish', () => canal.disconnect());
+            });
+    }
+
+    if(message.content === '!kock2') {
+        if(message.member.voice.channel) {
+            const connection = await message.member.voice.channel.join();
+            const stream = ytdl('https://www.youtube.com/watch?v=YwiHzOmSmZM', { filter : 'audioonly' });
+            const dispatcher = connection.play(stream);
+            console.log("momento kock desde: ", `${message.guild}`);
+
+            dispatcher.on('finish', () => connection.disconnect());
+        }
+        else {
+            return message.reply('conectese al canal qlo');
+        }
+        const momentoKock = new Discord.MessageEmbed()
+            .setTitle('Momento Kock')
+            .setImage('https://media.discordapp.net/attachments/401072482930524160/932740958469099550/unknown.png')
+        message.channel.send(momentoKock);
+    }
+
+    if(message.content === 'bin chilin'){
+        if(message.member.voice.channel){
+            const connection = await message.member.voice.channel.join();
+            const stream = ytdl('https://www.youtube.com/watch?v=C-e_Tv2fFsk', { filter : 'audioonly' });
+            const dispatcher = connection.play(stream);
+            console.log("bin chilin desde: ", `${message.guild}`);
+
+            dispatcher.on('finish', () => connection.disconnect());
+        }
+        else{
+            return message.reply('连接到他妈的频道');
+        }
+    }
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
