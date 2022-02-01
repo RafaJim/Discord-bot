@@ -787,6 +787,35 @@ client.on('message', async message =>
         }
     }
 
+    if(message.content === 'game'){
+        const member = message.author;
+        const member2 = message.mentions.members.first() || message.guild.members.cache.get(1) || message.guild.member(message.author);
+        // if (!member2.presence.activities || member2.presence.activities.length == 0) {
+        //     console.log(member2);
+        //     console.log('no jugando');
+        // } else {
+        //     const activity = member.presence.activities[0];
+        //     console.log('si esta jugando');
+        // }
+        //console.log(member2.presence);
+        // console.log(message.guild.members.presence);
+        // console.log(member2.user.presence);
+        // console.log(member2.user.presence.activities);
+        message.guild.members.fetch({ user : ['208399600082485259'], withPresences: true })
+            .then(console.log)
+            .catch(console.error);
+        
+        if(member2){
+            // console.log("\nsalto de linea\n")
+            // console.log(member2.user.presence);
+            // if(member2.presence.activities.type.toLowerCase() === 'visual studio code'){
+            //     console.log('entro');
+            //     return message.reply("puerk");
+            // }
+            // console.log('salio');
+        }
+    }
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 	const args = message.content.split(' ');
